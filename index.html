@@ -1,425 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ExtendPro - Expert Extension Planning Services</title>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #34495e;
-            --accent-color: #e74c3c;
-            --text-color: #333;
-            --background-color: #ecf0f1;
-        }
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: background-color 0.3s ease;
-        }
-
-        header.scrolled {
-            background-color: rgba(44, 62, 80, 0.9);
-        }
-
-        header .logo {
-            float: left;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        header .logo svg {
-            width: 200px;
-            height: 50px;
-            vertical-align: middle;
-        }
-
-        header nav {
-            float: right;
-        }
-
-        header nav ul {
-            display: flex;
-        }
-
-        header nav li {
-            list-style: none;
-        }
-
-        header nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            transition: color 0.3s ease;
-        }
-
-        header nav a:hover {
-            color: var(--accent-color);
-        }
-
-        #showcase {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/800') no-repeat center center/cover;
-            color: #fff;
-            padding-top: 60px;
-        }
-
-        #showcase h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        #showcase p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.5s both;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--accent-color);
-            color: #fff;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background: #c0392b;
-        }
-
-        #services {
-            padding: 4rem 0;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .service-card img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 1rem;
-        }
-
-        #testimonials {
-            background: var(--secondary-color);
-            color: #fff;
-            padding: 4rem 0;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 10px;
-            font-style: italic;
-        }
-
-        #contact {
-            padding: 4rem 0;
-        }
-
-        form {
-            display: grid;
-            gap: 1rem;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        footer {
-            background-color: var(--primary-color);
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            header {
-                padding: 0.5rem 0;
-            }
-
-            header .logo,
-            header nav {
-                float: none;
-                text-align: center;
-            }
-
-            header nav ul {
-                flex-direction: column;
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary-color);
-            }
-
-            header nav ul.show {
-                display: flex;
-            }
-
-            header nav li {
-                margin: 0.5rem 0;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-                background: none;
-                border: none;
-                color: #fff;
-                font-size: 1.5rem;
-                cursor: pointer;
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-            }
-
-            #showcase h1 {
-                font-size: 2rem;
-            }
-
-            #showcase p {
-                font-size: 1rem;
-            }
-
-            .services-grid,
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-
-<body>
+  <body>
     <header>
-        <div class="container">
-            <div class="logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="10 0 400 100">
-                    <!-- House shape -->
-                    <path d="M20 80 L50 40 L80 80 Z" fill="#3498db" />
+      <div class="container">
+        <div class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="10 0 400 100">
+            <!-- House shape -->
+            <path d="M20 80 L50 40 L80 80 Z" fill="#3498db" />
 
-                    <!-- Extension shape -->
-                    <rect x="78" y="57" width="155" height="18" fill="#e74c3c" />
+            <!-- Extension shape -->
+            <rect x="78" y="57" width="155" height="18" fill="#e74c3c" />
 
-                    <!-- Ruler/measure tool -->
-                    <line x1="10" y1="85" x2="90" y2="85" stroke="#ffffff" stroke-width="2" />
-                    <line x1="10" y1="85" x2="10" y2="90" stroke="#ffffff" stroke-width="2" />
-                    <line x1="90" y1="85" x2="90" y2="90" stroke="#ffffff" stroke-width="2" />
+            <!-- Ruler/measure tool -->
+            <line
+              x1="10"
+              y1="85"
+              x2="90"
+              y2="85"
+              stroke="#ffffff"
+              stroke-width="2"
+            />
+            <line
+              x1="10"
+              y1="85"
+              x2="10"
+              y2="90"
+              stroke="#ffffff"
+              stroke-width="2"
+            />
+            <line
+              x1="90"
+              y1="85"
+              x2="90"
+              y2="90"
+              stroke="#ffffff"
+              stroke-width="2"
+            />
 
-                    <!-- Company name -->
-                    <text x="60" y="50" font-family="Arial, sans-serif" font-size="50" font-weight="bold"
-                        fill="#ffffff">
-                        Extend<tspan fill="#e74c3c">Pro</tspan>
-                    </text>
+            <!-- Company name -->
+            <text
+              x="60"
+              y="50"
+              font-family="Arial, sans-serif"
+              font-size="50"
+              font-weight="bold"
+              fill="#ffffff"
+            >
+              Extend
+              <tspan fill="#e74c3c">Pro</tspan>
+            </text>
 
-                    <!-- Tagline -->
-                    <text x="80" y="70" font-family="Arial, sans-serif" font-size="12" fill="#ecf0f1">
-                        Expanding Your Living Space
-                    </text>
-                </svg>
-            </div>
-            <button class="mobile-menu-btn">☰</button>
-            <nav>
-                <ul>
-                    <li><a href="#showcase">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+            <!-- Tagline -->
+            <text
+              x="80"
+              y="70"
+              font-family="Arial, sans-serif"
+              font-size="12"
+              fill="#ecf0f1"
+            >
+              Expanding Your Living Space
+            </text>
+          </svg>
         </div>
+        <button class="mobile-menu-btn">☰</button>
+        <nav>
+          <ul>
+            <li><a href="#showcase">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <section id="showcase">
-        <div class="container">
-            <h1>Transform Your Home with Expert Extension Planning</h1>
-            <p>Save over £3,000 compared to traditional architects</p>
-            <a href="#contact" class="btn">Get Started</a>
-        </div>
+      <div class="container">
+        <h1>Transform Your Home with Expert Extension Planning</h1>
+        <p>Save over £3,000 compared to traditional architects</p>
+        <a href="#contact" class="btn">Get Started</a>
+      </div>
     </section>
 
     <section id="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <img src="/api/placeholder/80/80" alt="Design">
-                    <h3>Design</h3>
-                    <p>Custom designs tailored to your needs and preferences.</p>
-                </div>
-                <div class="service-card">
-                    <img src="/api/placeholder/80/80" alt="Consultation">
-                    <h3>Consultation</h3>
-                    <p>Expert advice to guide you through the planning process.</p>
-                </div>
-                <div class="service-card">
-                    <img src="/api/placeholder/80/80" alt="Site Visits">
-                    <h3>Site Visits</h3>
-                    <p>On-site assessments to ensure optimal extension planning.</p>
-                </div>
-            </div>
+      <div class="container">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <img src="/api/placeholder/80/80" alt="Design" />
+            <h3>Design</h3>
+            <p>Custom designs tailored to your needs and preferences.</p>
+          </div>
+          <div class="service-card">
+            <img src="/api/placeholder/80/80" alt="Consultation" />
+            <h3>Consultation</h3>
+            <p>Expert advice to guide you through the planning process.</p>
+          </div>
+          <div class="service-card">
+            <img src="/api/placeholder/80/80" alt="Site Visits" />
+            <h3>Site Visits</h3>
+            <p>On-site assessments to ensure optimal extension planning.</p>
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="testimonials">
-        <div class="container">
-            <h2>What Our Clients Say</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial">
-                    <p>"ExtendPro helped us save thousands on our extension. Their expertise is unmatched!"</p>
-                    <p>- John D.</p>
-                </div>
-                <div class="testimonial">
-                    <p>"The team's attention to detail and professionalism made our project a breeze."</p>
-                    <p>- Sarah M.</p>
-                </div>
-            </div>
+      <div class="container">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial">
+            <p>
+              "ExtendPro helped us save thousands on our extension. Their
+              expertise is unmatched!"
+            </p>
+            <p>- John D.</p>
+          </div>
+          <div class="testimonial">
+            <p>
+              "The team's attention to detail and professionalism made our
+              project a breeze."
+            </p>
+            <p>- Sarah M.</p>
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <form>
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn">Send</button>
-            </form>
-        </div>
+      <div class="container">
+        <h2>Contact Us</h2>
+        <form>
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <textarea placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn">Send</button>
+        </form>
+      </div>
     </section>
 
     <footer>
-        <p>ExtendPro - Over 30 Years of Industry Experience | Copyright &copy; 2024</p>
+      <p>
+        ExtendPro - Over 30 Years of Industry Experience | Copyright &copy; 2024
+      </p>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
         });
+      });
 
-        // Header background change on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+      // Header background change on scroll
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Animate elements on scroll
+      const animateOnScroll = () => {
+        const elements = document.querySelectorAll(
+          ".service-card, .testimonial"
+        );
+        elements.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight - 100;
+          if (isVisible) {
+            el.style.animation = "fadeInUp 1s ease-out forwards";
+          }
         });
+      };
 
-        // Animate elements on scroll
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.service-card, .testimonial');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight - 100;
-                if (isVisible) {
-                    el.style.animation = 'fadeInUp 1s ease-out forwards';
-                }
-            });
-        };
+      window.addEventListener("scroll", animateOnScroll);
+      animateOnScroll(); // Initial check
 
-        window.addEventListener('scroll', animateOnScroll);
-        animateOnScroll(); // Initial check
+      // Mobile menu toggle
+      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+      const nav = document.querySelector("header nav ul");
 
-        // Mobile menu toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const nav = document.querySelector('header nav ul');
+      mobileMenuBtn.addEventListener("click", () => {
+        nav.classList.toggle("show");
+      });
 
-        mobileMenuBtn.addEventListener('click', () => {
-            nav.classList.toggle('show');
+      // Close mobile menu when a link is clicked
+      document.querySelectorAll("header nav a").forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("show");
         });
-
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('header nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('show');
-            });
-        });
+      });
     </script>
-</body>
-
+  </body>
 </html>

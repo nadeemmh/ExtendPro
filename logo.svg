@@ -1,0 +1,57 @@
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="10 0 400 100">
+            <!-- House shape -->
+            <path d="M20 80 L50 40 L80 80 Z" fill="#3498db" />
+
+            <!-- Extension shape -->
+            <rect x="78" y="57" width="155" height="18" fill="#e74c3c" />
+
+            <!-- Ruler/measure tool -->
+            <line
+              x1="10"
+              y1="85"
+              x2="90"
+              y2="85"
+              stroke="#ffffff"
+              stroke-width="2"
+            />
+            <line
+              x1="10"
+              y1="85"
+              x2="10"
+              y2="90"
+              stroke="#ffffff"
+              stroke-width="2"
+            />
+            <line
+              x1="90"
+              y1="85"
+              x2="90"
+              y2="90"
+              stroke="#ffffff"
+              stroke-width="2"
+            />
+
+            <!-- Company name -->
+            <text
+              x="60"
+              y="50"
+              font-family="Arial, sans-serif"
+              font-size="50"
+              font-weight="bold"
+              fill="#ffffff"
+            >
+              Extend
+              <tspan fill="#e74c3c">Pro</tspan>
+            </text>
+
+            <!-- Tagline -->
+            <text
+              x="80"
+              y="70"
+              font-family="Arial, sans-serif"
+              font-size="12"
+              fill="#ecf0f1"
+            >
+              Expanding Your Living Space
+            </text>
+          </svg>
